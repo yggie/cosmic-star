@@ -4,12 +4,21 @@ class SubmissionsController < ApplicationController
     @submission = Submission.search(params)
 
     respond_to do |format|
-      format.json { render json: @submission }
+      format.json do
+        render json: @submission.as_json(
+          include: {
+            person: {},
+            answers: {
+              include: :doctors
+            }
+          }
+        )
+      end
     end
   end
 
   def create
-    @person = Person.new(params[:person])
+    @person = Person.new(params.fetch(:person, {}))
     @answers = params.fetch(:answers, []).map do |ans|
       ans.delete(:doctors)
       Answer.new(ans)

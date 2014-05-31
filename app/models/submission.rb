@@ -6,6 +6,6 @@ class Submission
   timestamps!
 
   def self.search(params)
-    first
+    last
   end
 end
