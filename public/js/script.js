@@ -38,9 +38,9 @@ function inputData(json, callback) {
     byId('data-surname').innerHTML = json['surname'];
     byId('data-dob').innerHTML = json['dob'];
     answers = json['submissions'][0]['answers'];
-    for(i = 0; i < answers.length; i++) {
+    for(i = 1; i < answers.length; i++) {
         root = answers[i];
-        byId('data-' + i).innerHTML = root.answer;
+        byId('data-' + (i - 1)).innerHTML = root.answer;
     }
     callback();
 }
@@ -70,4 +70,5 @@ window.onload = function() {
         e.preventDefault();
         processPatient(byId('first-name').checked, search.value);
     }
+    processPatient(byId('first-name').checked, search.value);
 }
