@@ -5,14 +5,18 @@ class SubmissionsController < ApplicationController
 
     respond_to do |format|
       format.json do
-        render json: @submission.as_json(
-          include: {
-            person: {},
-            answers: {
-              include: :doctors
+        if @submission
+          render json: @submission.as_json(
+            include: {
+              person: {},
+              answers: {
+                include: :doctors
+              }
             }
-          }
-        )
+          )
+        else
+          render nothing: true, status: 400
+        end
       end
     end
   end
@@ -20,6 +24,11 @@ class SubmissionsController < ApplicationController
   def create
     @person = Person.new(params.fetch(:person, {}))
     @answers = params.fetch(:answers, []).map do |ans|
+      if ans[:doctors]
+        ans[:doctors] = ans[:doctors].map { |hash| Doctor.new(hash) }
+      else
+        ans.delete(:doctors)
+      end
       Answer.new(ans)
     end
 
