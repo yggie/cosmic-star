@@ -1,16 +1,20 @@
 class SubmissionsController < ApplicationController
 
   def index
-    @submission = Submission.search(params)
+    @patient = Patient.search(params)
 
     respond_to do |format|
       format.json do
-        if @submission
-          render json: @submission.as_json(
+        if @patient
+          render json: @patient.as_json(
             include: {
-              person: {},
-              answers: {
-                include: :doctors
+              submissions: {
+                include: {
+                  person: {},
+                  answers: {
+                    include: :doctors
+                  }
+                }
               }
             }
           )
@@ -32,7 +36,15 @@ class SubmissionsController < ApplicationController
       Answer.new(ans)
     end
 
-    if Submission.create(person: @person, answers: @answers)
+    @patient = Patient.find_by_patient_id(@person.patient_id)
+
+    unless @patient
+      render nothing: true, status: 400
+      return
+    end
+
+    @submission = @patient.submissions.create(person: @person, answers: @answers)
+    if @submission
       render nothing: true, status: 200
     else
       render nothing: true, status: 400
