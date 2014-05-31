@@ -10,7 +10,7 @@ class Patient
 
   def self.search(params)
     if params[:first_name]
-      @patient = Patient.find_by_first_name(params[:first_name])
+      @patient = Patient.find_by_first_name(params[:first_name].titleize)
     elsif params[:id]
       @patient = Patient.find_by_patient_id(params[:id])
     else
