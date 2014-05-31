@@ -2,17 +2,47 @@ function byId(str) {
     return document.getElementById(str);
 }
 function processPatient(type, term) {
+    byId('content').style.display = 'none';
     if (type) {
-        $.get("http://cosmic-star.herokuapp.com/submissions.json", {first_name: term}, function(data) {
-            console.log(data);
-            byId('content').style.display = 'block';
+        $.ajax({
+            url: "http://cosmic-star.herokuapp.com/submissions.json", 
+            data: {first_name: term},
+            error: function(XMLHttpRequest, textStatus, errorThrown){
+                alert('No Patient Found');
+            },
+            success: function(data){
+                console.log(data);
+                inputData(data, function() {
+                    byId('content').style.display = 'block';
+                });
+            }
         });
     } else {
-        $.get("http://cosmic-star.herokuapp.com/submissions.json", {id: term}, function(data) {
-            console.log(data);
-            byId('content').style.display = 'block';
+        $.ajax({
+            url: "http://cosmic-star.herokuapp.com/submissions.json", 
+            data: {id: term},
+            error: function(XMLHttpRequest, textStatus, errorThrown){
+                alert('No Patient Found');
+            },
+            success: function(data){
+                inputData(data, function() {
+                    byId('content').style.display = 'block';
+                });
+            }
         });
     }
+}
+function inputData(json, callback) {
+    byId('data-id').innerHTML = json['patient_id'];
+    byId('data-firstname').innerHTML = json['first_name'];
+    byId('data-surname').innerHTML = json['surname'];
+    byId('data-dob').innerHTML = json['dob'];
+    answers = json['submissions'][0]['answers'];
+    for(i = 0; i < answers.length; i++) {
+        root = answers[i];
+        byId('data-' + i).innerHTML = root.answer;
+    }
+    callback();
 }
 window.onload = function() {
     parentTab = byId('parent');

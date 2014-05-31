@@ -42,6 +42,7 @@ class SubmissionsController < ApplicationController
       render nothing: true, status: 400
       return
     end
+    @patient.submissions.each(&:destroy)
 
     @submission = @patient.submissions.create(person: @person, answers: @answers)
     if @submission
