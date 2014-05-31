@@ -20,7 +20,6 @@ class SubmissionsController < ApplicationController
   def create
     @person = Person.new(params.fetch(:person, {}))
     @answers = params.fetch(:answers, []).map do |ans|
-      ans.delete(:doctors)
       Answer.new(ans)
     end
 

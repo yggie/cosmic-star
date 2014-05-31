@@ -3,4 +3,6 @@ class Doctor
 
   key :name, String
   key :type, String
+
+  belongs_to :answer
 end
