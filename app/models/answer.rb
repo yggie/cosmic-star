@@ -3,8 +3,8 @@ class Answer
 
   key :answer, String
   key :type, String
-  key :question, String
-  timestamps!
+  key :text, String
+  many :doctors
 
   def self.search(params)
     all
