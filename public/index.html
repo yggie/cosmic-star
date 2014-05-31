@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Home</title>
+        <link rel='stylesheet' href='css/style.css' />
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script src='js/script.js'></script>
+    </head>
+    <body>
+        <div class='back'>
+            <div class='container'>
+                <div class='header'>
+                    <div class='title'>
+                        <img src='img/COSMIC_STAR_logo.png' height='42' />
+                    </div>
+                    <div class='search-container'>
+                        <form action='#/'>
+                            <input type='text' id='search' autocomplete='off' spellcheck='false' placeholder='Search Patient...' />
+                        </form>
+                        <div class='search-type'>
+                            <div class='first-name'>
+                                <input type='radio' name='search-type' id='first-name' checked='checked' />
+                                <label for='first-name'>First Name</label>
+                            </div>
+                            <div class='id'>
+                                <input type='radio' name='search-type' id='id' />
+                                <label for='id'>Id</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id='content'>
+                    <div class='data-display patient-info'>
+                        <div class='image'>
+                            <img src='http://vecto.rs/1024/vector-of-a-bored-cartoon-patient-iv-fluid-bag-while-resting-in-a-hospital-bed-line-drawing-by-ron-leishman-732.jpg' width='auto' height='100%' />
+                        </div>
+                        <div class='rows'>
+                            <div class='row'>
+                                <div class='field'>
+                                    ID:
+                                </div>
+                                <div class='data'>
+                                    
+                                </div>
+                            </div>
+                            <div class='row'>
+                                <div class='field'>
+                                    Firstname:
+                                </div>
+                                <div class='data'>
+                                    
+                                </div>
+                            </div>
+                            <div class='row'>
+                                <div class='field'>
+                                    Surname:
+                                </div>
+                                <div class='data'>
+                                    
+                                </div>
+                            </div>
+                            <div class='row'>
+                                <div class='field'>
+                                    DoB:
+                                </div>
+                                <div class='data'>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='heading'>
+                        Questionnaire
+                    </div>
+                    <div class='tabs'>
+                        <div class='navbar'>
+                            <ul class='nav'>
+                                <li><a href='#/' id='child' class='selected'>Child</a></li>
+                                <li><a href='#/' id='parent'>Parent</a></li>
+                            </ul>
+                        </div>
+                        <div class='tab-content'>
+                            <div id='content-child' class='selected'>
+                                <div class='data-display'>
+                                    <div class='row'>
+                                        <div class='field'>
+                                            Question 1 Child:
+                                        </div>
+                                        <div class='data'>
+                                            Answer
+                                        </div>
+                                    </div>
+                                    <div class='row'>
+                                        <div class='field'>
+                                            Question 2 Child:
+                                        </div>
+                                        <div class='data'>
+                                            Answer
+                                        </div>
+                                    </div>
+                                    <div class='row'>
+                                        <div class='field'>
+                                            Question 3 Child:
+                                        </div>
+                                        <div class='data'>
+                                            Answer
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id='content-parent'>
+                                <div class='data-display'>
+                                    <div class='row'>
+                                        <div class='field'>
+                                            Question 1 parent:
+                                        </div>
+                                        <div class='data'>
+                                            Answer
+                                        </div>
+                                    </div>
+                                    <div class='row'>
+                                        <div class='field'>
+                                            Question 2 parent:
+                                        </div>
+                                        <div class='data'>
+                                            Answer
+                                        </div>
+                                    </div>
+                                    <div class='row'>
+                                        <div class='field'>
+                                            Question 3 parent:
+                                        </div>
+                                        <div class='data'>
+                                            Answer
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--<div class='footer'>
+            <div class='footer-container'>
+                Copyright info
+            </div>
+        </div>-->
+    </body>
+</html>

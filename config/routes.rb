@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
-  root 'submissions#index'
+  root 'static_pages#index'
 
   get 'submissions' => 'submissions#index'
   post 'submissions' => 'submissions#create'
