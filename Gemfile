@@ -27,6 +27,8 @@ gem 'spring',        group: :development
 gem 'bson_ext'
 gem 'mongo_mapper', :git => "git://github.com/mongomapper/mongomapper.git", :tag => "v0.13.0.beta2"
 
+gem 'rack-cors', :require => 'rack/cors'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
