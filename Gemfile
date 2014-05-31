@@ -39,3 +39,8 @@ gem 'mongo_mapper', :git => "git://github.com/mongomapper/mongomapper.git", :tag
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+group :development do
+  gem 'awesome_print'
+  gem 'pry'
+end
+

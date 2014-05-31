@@ -5,4 +5,8 @@ class Answer
   key :type, String
   key :question, String
   timestamps!
+
+  def self.search(params)
+    all
+  end
 end
